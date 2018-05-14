@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
     res.sendFile('index.html');
 })
 
-const PORT = process.env.NODE_ENV || 3455;
+const PORT = process.env.PORT || 3455;
 app.listen(PORT, () => {
     console.log(`Started server on PORT: ${PORT}`);
 });
