@@ -20,14 +20,19 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     console.log('New user connected');
 
-    socket.emit('newMessage', {
-        from: 'example',
-        text: 'This is a message',
-        createdAt: Date.now()
-    });
+    // socket.emit('newMessage', {
+    //     from: 'example',
+    //     text: 'This is a message',
+    //     createdAt: Date.now()
+    // });
 
     socket.on('createMessage', data => {
         console.log('create message', data);
+        io.emit('newMessage', {
+            from: data.from,
+            text: data.text,
+            createdAt: Date.now()
+        });
     })
 
     socket.on('disconnect', () => {
