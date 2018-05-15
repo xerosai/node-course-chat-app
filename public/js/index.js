@@ -14,6 +14,10 @@ socket.on('newMessage', function(msg) {
     console.log('New message received', msg);
 });
 
+socket.on('userJoined', function(msg) {
+    console.log('User Joined', msg);
+});
+
 socket.on('disconnect', function () {
     console.log('Disconnected from server');
 });
