@@ -3,6 +3,8 @@ const http = require('http');
 const path = require('path');
 const socketIO = require('socket.io');
 
+const {generateMessage} = require('./utils/message');
+
 const publicPath = path.join(__dirname, '../public');
 
 const app = express();
@@ -26,25 +28,13 @@ io.on('connection', (socket) => {
     //     createdAt: Date.now()
     // });
 
-    socket.emit('newMessage', {
-        from: 'Admin',
-        text: 'Welcome to the chat app',
-        createdAt: Date.now()
-    });
+    socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
 
-    socket.broadcast.emit('newMessage', {
-        from: 'Admin',
-        text: 'New user joined the server',
-        createdAt: Date.now()
-    });
+    socket.broadcast.emit('newMessage', generateMessage('Admin', 'A new user has joined'));
 
     socket.on('createMessage', data => {
         console.log('create message', data);
-        io.emit('newMessage', {
-            from: data.from,
-            text: data.text,
-            createdAt: Date.now()
-        });
+        io.emit('newMessage', generateMessage(message.from, message.text));
         // socket.broadcast.emit('newMessage', {
         //     from: data.from,
         //     text: data.text,
