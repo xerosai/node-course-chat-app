@@ -5,7 +5,26 @@
     </head>
     <body>
         <p>Welcome to the chat app experience</p>
+
+        <div class="conversation-container">
+            <ol id="messages">
+
+            </ol>
+        </div>
+        
+        <form id="message-form">
+            <div class="form-group">
+                <input type="text" name="message" value="" placeholder="Type a message...">
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <button type="button">Send</button>
+                </div>
+            </div>
+        </form>
+
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>

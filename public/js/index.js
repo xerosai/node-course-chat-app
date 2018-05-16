@@ -12,6 +12,10 @@ socket.on('connect', function() {
 
 socket.on('newMessage', function(msg) {
     console.log('New message received', msg);
+    const li = jQuery('<li></li>');
+    li.text(`${msg.from}: ${msg.text}`);
+
+    jQuery('#messages').append(li);
 });
 
 socket.on('userJoined', function(msg) {
@@ -20,4 +24,15 @@ socket.on('userJoined', function(msg) {
 
 socket.on('disconnect', function () {
     console.log('Disconnected from server');
+});
+
+jQuery('#message-form').on('submit', function(e) {
+    e.preventDefault();
+
+    socket.emit('createMessage', {
+        from: 'User',
+        text: jQuery('[name=message]').val()
+    }, function (data) {
+        console.log(data);
+    });
 });
