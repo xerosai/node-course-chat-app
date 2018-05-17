@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title>Chat | ChatApp</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body class="chat">
+
+        <div class="chat__sidebar">
+            <h3>People</h3>
+            <div class="" id="users">
+
+            </div>
+        </div>
+
+        <div class="chat__main">
+            <ol class="chat__messages" id="messages"></ol>
+
+            <div class="chat__footer">
+                <form id="message-form">
+                    <!-- <div class="form-group"> -->
+                        <input type="text" name="message" value="" placeholder="Type a message..." autofocus autocomplete="off">
+                    <!-- </div> -->
+                    <button type="button">Send</button>
+                </form>
+                <button class="btn" id="send-location">Send location</button>
+            </div>
+        </div>
+
+        <!-- templates -->
+        <script id="message-template" type="text/template">
+            <li class="message">
+                <div class="message__title">
+                    <h4>{{from}}</h4>
+                    <span>{{createdAt}}</span>
+                </div>
+                <div class="message__body">
+                    <p>{{text}}</p>
+                </div>
+            </li>
+        </script>
+
+        <script id="location-message-template" type="text/template">
+            <li class="message">
+                <div class="message__title">
+                    <h4>{{from}}</h4>
+                    <span>{{createdAt}}</span>
+                </div>
+                <div class="message__body">
+                    <p>
+                        <a href="{{url}}" target="_blank">My current location</a>
+                    </p>
+                </div>
+            </li>
+        </script>
+
+        <!-- scripts -->
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js" integrity="sha256-XDU6Po3hKjdQXJHRrKrWlIF/E6y6BBgV5eiqZSYePpo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js" integrity="sha256-L3S3EDEk31HcLA5C6T2ovHvOcD80+fgqaCDt2BAi92o=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/chat.js"></script>
+    </body>
+</html>
